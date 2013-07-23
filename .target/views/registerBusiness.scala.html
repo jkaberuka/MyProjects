@@ -1,0 +1,53 @@
+@(businesses : List[Business], businessForm : Form[Business])
+
+@import helper._
+
+@main("Register"){
+<div style="background:#4081b7; padding:80px; margin:auto; width:900px;color:#fff;">
+
+<table align = "center" bgcolor = "green" width = 80%  class 'btn' btn-success span "2">
+   <tr>
+   <td align="center">
+     <h1>@businesses.size() business(s) </h1>
+    
+    <ul>
+        @for(business <- businesses) {
+            <li>
+                @business.businessDescription 
+               
+              @* <a href="@routes.Application.updateBusiness(business.id)" > Update </a> *@
+                
+                
+                
+                @form(routes.Application.deleteBusiness(business.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+  
+    <h2>Add your new Business</h2>
+    
+    @form(action=routes.Application.newBusiness()) {
+        
+        @helper.inputText(businessForm("businessEmail"),'_label ->"email")
+        @helper.inputText(businessForm("businessPhoneNumber"),'_label -> "phoneNumber")
+        @helper.inputText(businessForm("businessName"),'_label -> "Name")
+        @inputText(businessForm("businessDescription"), '_label->"Business Description")
+        
+        <input type="submit" value="Create Business">
+        <a class="btn btn-success span2"  href="@routes.Application.getBusinesses()"> Show all businesses </a>
+        </td>
+        </tr>
+        </table>
+       
+     
+        
+    
+   <ul id="businesses"></ul> 
+</div>
+}
+
+
+
+}
