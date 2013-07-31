@@ -16,8 +16,10 @@ public class Business extends Model {
 
 
 public String businessEmail;
-@Required
+
 public String businessName;
+
+public String businessType;
 
  @Id
 public  Long id;
@@ -25,11 +27,12 @@ public  Long id;
 
 public String businessPhoneNumber;
 
-  @Required
+  
 public String businessDescription;
 public File image;
 
-
+//@Required
+//public String businessType;
 
 
 
@@ -56,12 +59,22 @@ public String getBusinessPhoneNumber()
 	
 }
 
+public Long getId(){
+	return id;
+}
+
+public String getBusinessType(){
+	
+	return businessType;
+}
+
 public static List<Business> all() {
     //return new ArrayList<Task>();
 	return find.all();
 }
   
 public static void create(Business business) {
+	 System.out.println(business);
 	business.save();
 }
 public static void update(Business business)
@@ -72,7 +85,9 @@ public static void update(Business business)
 public static void delete(Long id) {
 	find.ref(id).delete();
 }
-    
+ public String toString(){
+	 return businessName + " " + id;
+ }
 
 
 }

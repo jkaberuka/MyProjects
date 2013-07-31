@@ -15,11 +15,18 @@ public String email;
 public String password;
 
 
-public Login(String email, String password ){
+
+//public String validate() {
+//    if (User.authenticate(email, password) == null) {
+//      return "Invalid user or password";
+//    }
+//    return null;
+//}
+
+
+public String toString(){
 	
-this.email = email;
-this.password = password;
-
+	
+return email + " " + password;
 }
-
 }

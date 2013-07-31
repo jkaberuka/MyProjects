@@ -1,1 +1,15 @@
-@(businesses : List[Business], id:Long)
+@(filledForm: Form[Business], id: Long)
+@import helper._
+@main("edit my business"){
+
+ @form(routes.Application.updateBusiness(id)){
+ 
+ @inputText(filledForm("businessEmail"),'_label ->"email")
+ @inputText(filledForm("businessPhoneNumber"),'_label -> "phoneNumber")
+ @inputText(filledForm("businessName"),'_label -> "Name")
+ @select(filledForm("businessType"),options(Seq("Restaurants","Hotels","Hostels","Houses")),'_label ->"Business Type",'_default->"--Select The type of your Business--")
+ 
+   <input type="submit"  value="saveBusiness">
+}
+
+}

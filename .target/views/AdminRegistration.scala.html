@@ -2,12 +2,12 @@
 
 @import helper._
 @main("Registering admin"){
- @form(action=routes.Application.addAdmin()){
+@form(action=routes.Application.addAdmin()){
 <fieldset>
 @helper.inputText(adminForm("adminLoginName"),'_label ->"AdminLoginName")
- @helper.inputPassword(adminForm("adminPasswordName"),'_label -> "AdminPassowrd")
-<input type="submit" value="Add Administrator">
-<a class="btn btn-success span2"  href="@routes.Application.adminPage()"> Reset </a>
+@helper.inputPassword(adminForm("adminPasswordName"),'_label -> "AdminPassowrd")
+<!--<input type="submit" value="Add Administrator">-->
+<a class="btn btn-success span2"  href="@routes.Application.registerBusiness()"> Login and create New Business </a>
 
 </fieldset>
 }

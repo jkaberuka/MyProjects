@@ -1,0 +1,28 @@
+ @(businesses: List[Business], searchForm: Form[Business])
+ @import helper._
+ 
+ @main("show all businesses"){
+    @form(action=routes.Application.goToBusinessListPage("")){
+    	 @select(searchForm("businessType"),options(Seq("Restaurants","Hotels","Hostels","Houses")),'_label ->"Business Type",'_default->"--Select The type of your Business--")
+    	
+    	<input type="submit" value="Find by type">
+     <a class="btn btn-success span2"  href="@routes.Application.goToBusinessListPage()"> Show all businesses </a>
+    }
+    
+    
+    <ul>
+        @for(business <- businesses) {
+            <li>
+                <p>Business Type: @business.businessType</p>
+                <p>Business Name: @business.businessName</p>
+               <a href="@routes.Application.editBusiness(business.id)">update </a>
+         @form(routes.Application.deleteBusiness(business.id)) {
+                   <input type="submit"  value="Delete"> 
+                
+                }
+            </li>
+        }
+        
+      
+    </ul>
+    }
