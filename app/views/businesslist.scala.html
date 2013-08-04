@@ -1,4 +1,5 @@
  @(businesses: List[Business], searchForm: Form[Business])
+ 
  @import helper._
  
  @main("show all businesses"){
@@ -15,9 +16,9 @@
             <li>
                 <p>Business Type: @business.businessType</p>
                 <p>Business Name: @business.businessName</p>
-               <a href="@routes.Application.editBusiness(business.id)">update </a>
+               <a class="btn" href="@routes.Application.editBusiness(business.id)">Update</a>
          @form(routes.Application.deleteBusiness(business.id)) {
-                   <input type="submit"  value="Delete"> 
+                   <input type="submit" class="btn" value="Delete"> 
                 
                 }
             </li>
